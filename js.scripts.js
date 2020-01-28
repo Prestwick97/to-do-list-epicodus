@@ -42,14 +42,41 @@ function Task(location, time, chore) {
 }
 
 Task.prototype.info = function() {
-  return this.location + " " + this.time + " " + this.chore;
+  return  "<li>" + this.location + " " + this.time + " " + this.chore + "</li>";
 }
 
 var toDoList = new ToDoList();
+// var location = new Task("#location");
+// var time = new Task("#time");
+// var chore = new chore("#chore");
+// toDoList.addTask("#location");
+// toDoList.addTask("time");
+// toDoList.addTask("#chore");
+// var location = new Task();
+// var time = new Task();
+// var chore = new chore();
+// toDoList.addTask();
+// toDoList.addTask();
+// toDoList.addTask();
 
-// User Logic
+
+// User Logic------
 $(document).ready(function() {
+$("form#list").submit(function(event){
+  event.preventDefault();
+  // $("input#name") = new ToDoList();
+  var location = $("input#location").val();
+  var time = $("input#time").val();
+  var chore = $("input#chore").val();
+  var task = new Task(location,time,chore);
+  console.log(task);
+  toDoList.addTask(task);
+  $("#listed").append(task.info()).show();
+  $("#listed").click(function() {
+  // $(this).addClass(".done"); need to make this work and we are done :}
+  });
+  // $("#location").text(location).info().show();
+});
 
-  
 
 });
